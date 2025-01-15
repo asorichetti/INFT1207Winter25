@@ -47,17 +47,22 @@ def high_budget(average):
             holder = (movies[i][0], movies[i][1], overage)
             high_budget_movies.append(holder)
     return(high_budget_movies)
+def read_file(file_name):
+    movies = []
+    with open(file_name, "r") as file:
+        lines = file.readlines()
+        for line in lines:
+            name, budget = line.strip().split(", ")
+            movies.append((name, int(budget)))
+    return movies
+def write_output_file(file_name, average_budget, high_budget_movies):
+    with open (file_name, "w") as file:
+        file.write(f"Average Budget: ${average_budget:,.2f}\n")
+        file.write("Movies with Budgets Higher than the Average Budget:\n")
+        for i in range (0, len(high_budget_movies), 1):
+            file.write(f"{high_budget_movies[i][0]}: ${high_budget_movies[i][1]:,}\n")
 
-#Define movies list at beginning state
-movies = [
-    ("Interstellar", 165000000),
-    ("The Dark Knight", 185000000),
-    ("Inception", 160000000),
-    ("Titanic", 200000000),
-    ("Avengers: Infinity War", 316000000),
-    ("Frozen II", 150000000),
-    ("Joker", 55000000)
-]
+movies = read_file("ICE1/MovieList.txt")
 #print prompt asking for how many movies would like to be added.
 num_to_add = int(input("How many movies would you like to add?: "))
 add_movie(num_to_add)
@@ -70,6 +75,9 @@ for i in range (0, len(high_budget_movies), 1):
     print(f"{high_budget_movies[i][0]}: ${high_budget_movies[i][1]:,.2f} (Higher by ${high_budget_movies[i][2]:,.2f})")
 print("Total High-Budget Movies: ", len(high_budget_movies))
 budget_sort()
+
+write_output_file("ICE1/Output.txt", average, high_budget_movies)
+print("Results saved to 'Output.txt'")
 
 
 
