@@ -87,7 +87,7 @@ print("Total High-Budget Movies: ", len(high_budget_movies))
 #Call function to sort movies by budget
 budget_sort()
 #Write results of program to output file and print message informing this has been done
-write_output_file("ICE1/Output.txt", average, high_budget_movies)
+write_output_file("ICE1\Output.txt", average, high_budget_movies)
 print("\nResults saved to 'Output.txt'")
 
 
