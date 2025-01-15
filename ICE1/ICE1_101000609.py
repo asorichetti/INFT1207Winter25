@@ -1,7 +1,7 @@
 ################################################
-#
-#
-#
+# Author: Alex Sorichetti
+# Student ID: 101000609
+# Description: Code to analyze movie budgets and save results to a file
 #############################################
 #Define function to add movies to the movies list
 def add_movie(num_to_add):
@@ -25,7 +25,7 @@ def budget_average():
 
     average_budget = total_budgets/len(movies)
     return(average_budget)
-
+#Define function to sort movies by budget from highest to lowest
 def budget_sort():
     sort_control=0
     while(sort_control<=3):
@@ -39,6 +39,7 @@ def budget_sort():
         sort_control+=1
     for i in range (0, len(movies), 1):
      print(f"{movies[i][0]}: ${movies[i][1]:,.2f}")
+#Define function to find movies with budgets above the average
 def high_budget(average):
     high_budget_movies = []
     for i in range(0, len(movies), 1):
@@ -47,6 +48,7 @@ def high_budget(average):
             holder = (movies[i][0], movies[i][1], overage)
             high_budget_movies.append(holder)
     return(high_budget_movies)
+#Define function to read movie titles and budget from a text file
 def read_file(file_name):
     movies = []
     with open(file_name, "r") as file:
@@ -55,6 +57,7 @@ def read_file(file_name):
             name, budget = line.strip().split(", ")
             movies.append((name, int(budget)))
     return movies
+#Define function to write results of program to an output file
 def write_output_file(file_name, average_budget, high_budget_movies):
     with open (file_name, "w") as file:
         file.write(f"Average Budget: ${average_budget:,.2f}\n")
@@ -62,22 +65,30 @@ def write_output_file(file_name, average_budget, high_budget_movies):
         for i in range (0, len(high_budget_movies), 1):
             file.write(f"{high_budget_movies[i][0]}: ${high_budget_movies[i][1]:,}\n")
 
+#Call for read_file function to bring in starting movie list
 movies = read_file("ICE1/MovieList.txt")
 #print prompt asking for how many movies would like to be added.
 num_to_add = int(input("How many movies would you like to add?: "))
+#Send user input to function to add movies
 add_movie(num_to_add)
+#Call function to solve for average budget of movies and store result in variable average
 average = budget_average()
+#Display average
 print(f"Average Budget: ${average:,.2f}")
 
 print("Movies with Budgets Higher Than Average:")
+#Call for function to solve for movies with budgets greater than average and store result in variable high_budget_movies
 high_budget_movies = high_budget(average)
+#print all movies stored in high_budget_movies
 for i in range (0, len(high_budget_movies), 1):
     print(f"{high_budget_movies[i][0]}: ${high_budget_movies[i][1]:,.2f} (Higher by ${high_budget_movies[i][2]:,.2f})")
+#print the total number of high budget movies
 print("Total High-Budget Movies: ", len(high_budget_movies))
+#Call function to sort movies by budget
 budget_sort()
-
+#Write results of program to output file and print message informing this has been done
 write_output_file("ICE1/Output.txt", average, high_budget_movies)
-print("Results saved to 'Output.txt'")
+print("\nResults saved to 'Output.txt'")
 
 
 

@@ -1,1 +1,5 @@
-
+Average Budget: $175,857,142.86
+Movies with Budgets Higher than the Average Budget:
+The Dark Knight: $185,000,000
+Titanic: $200,000,000
+Avengers: Infinity War: $316,000,000
