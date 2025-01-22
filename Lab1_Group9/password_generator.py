@@ -7,18 +7,25 @@
 import random
 import string
 
-#Finds random letters for password with random case
-def password_letters(a):
+#Finds random letters, numbers, and symbols for password
+def password_inputs(password_length):
+    password_checker = 0
+    #check that password components are within desired length, and that user input is valid
+    while password_checker == 0:
+        try:
+            a = int(input("please input the total amount of letters: "))
+            b = int(input("Please input the total amount of numbers: "))
+            c = int(input("Please input the total amount of symbols: "))
+            if a+b+c == password_length:
+                password_checker = 1
+            else:
+                print("Sorry, the numbers you entered do not add up to your desired password length. \n Please be sure to enter values that will total your desired password length.")
+        except ValueError:
+            print("Please only input numbers for the prompts, not letters or symbols.")
     for i in range (0,a,1):
         password_holder.append(random.choice(string.ascii_letters))
-
-#Finds random numbers from 0-9 for password
-def password_numbers(b):
     for i in range (0,b,1):
         password_holder.append(random.choice(string.digits))
-
-#Finds random symbols for password
-def password_symbols(c):
     for i in range(0,c,1):
         password_holder.append(random.choice(string.punctuation))
 
@@ -47,24 +54,8 @@ while password_checker == 0 :
             print("Inputted number outside range, please input a number from 8 to 20.")
     except ValueError:
         print("Please input a numeric value and not a string.")
-
-password_checker = 0
-#check that password components are within desired length, and that user input is valid
-while password_checker == 0:
-    try:
-        password_letter_amount = int(input("please input the total amount of letters: "))
-        password_number_amount = int(input("Please input the total amount of numbers: "))
-        password_symbol_amount = int(input("Please input the total amount of symbols: "))
-        if password_letter_amount+password_number_amount+password_symbol_amount == password_length:
-            password_checker = 1
-        else:
-            print("Sorry, the numbers you entered do not add up to your desired password length. \n Please be sure to enter values that will total your desired password length.")
-    except ValueError:
-        print("Please only input numbers for the prompts, not letters or symbols.")
 password_holder = []
-password_letters(password_letter_amount)
-password_numbers(password_number_amount)
-password_symbols(password_symbol_amount)
+password_inputs(password_length)
 password = password_joiner()
 print("Strong Password: ", password)
 write_output_file("Lab1_Group9\Output.txt", password)
