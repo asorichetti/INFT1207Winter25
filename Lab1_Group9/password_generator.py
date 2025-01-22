@@ -1,3 +1,9 @@
+##########################################################
+# Name: Alex Sorichetti
+# Student ID: 101000609
+# Description: A program to create a random secure password
+###########################################################
+
 import random
 import string
 
