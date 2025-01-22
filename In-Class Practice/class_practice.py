@@ -10,4 +10,4 @@ class Student:
 student1 = Student("Alice", 20, 100998999)
 student2 = Student("Alex", 22, 101000609)
 
-print(f"Name: {student2.name}, Age: {student2.age}, Student ID: {student2.student_id}")
+student2.display_info()
