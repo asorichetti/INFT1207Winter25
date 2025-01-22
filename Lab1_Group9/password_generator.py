@@ -18,9 +18,16 @@ def password_symbols(c):
 
 #Function to join list password_holder into final password
 def password_joiner():
+    #Shuffles the list into a random order
     random.shuffle(password_holder)
     password = "".join(password_holder)
     return(password)
+
+def write_output_file(file_name, password):
+     with open (file_name, "w") as file:
+        file.write(f"Password: {password}\n")
+
+
 
 print("Welcome to the Random Password Generator!")
 password_checker = 0
@@ -54,3 +61,5 @@ password_numbers(password_number_amount)
 password_symbols(password_symbol_amount)
 password = password_joiner()
 print("Strong Password: ", password)
+write_output_file("Lab1_Group9\Output.txt", password)
+print("\n Password successfully written to 'Output.txt'")
