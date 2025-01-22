@@ -12,3 +12,7 @@ student2 = Student("Alex", 22, 101000609)
 student3 = Student()
 student2.display_info()
 student3.display_info()
+student3.name = 'Joe'
+student3.age = 90
+student3.student_id = 2
+student3.display_info()
