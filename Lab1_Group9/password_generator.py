@@ -8,7 +8,7 @@ import random
 import string
 
 #Finds random letters, numbers, and symbols for password
-def password_inputs(password_length):
+def password_inputs(password_length, password_holder):
     password_checker = 0
     #check that password components are within desired length, and that user input is valid
     while password_checker == 0:
@@ -31,7 +31,7 @@ def password_inputs(password_length):
         password_holder.append(random.choice(string.punctuation))
 
 #Function to join list password_holder into final password
-def password_joiner():
+def password_joiner(password_holder):
     #Shuffles the list into a random order
     random.shuffle(password_holder)
     #Joins together the elements of password_holder into a string
@@ -58,9 +58,9 @@ def main():
         except ValueError:
             print("Please input a numeric value and not a string.")
     password_holder = []
-    password_inputs(password_length)
-    password = password_joiner()
-    print("Strong Password: ", password)
+    password_inputs(password_length, password_holder)
+    password = password_joiner(password_holder)
+    print(f"Strong Password: {password}")
     write_output_file("Lab1_Group9\Output.txt", password)
     print("\n Password successfully written to 'Output.txt'")
 
