@@ -21,6 +21,7 @@ def temp_input(num_sensors):
                 
             except ValueError:
                 print("Error: Please only enter numeric values")
+
     return(temp_range)
 
 def temp_sort(temps):
@@ -41,11 +42,23 @@ def temp_average(temps, result_holder):
     avg = round(avg, 2)
     result_holder.append(avg)
 def main():
+    DEGREE_SIGN = u'\N{DEGREE SIGN}'
     print("Hello, Welcome to the Temperature Sensor Program.")
-    num_sensors = int(input("How many sensors do you have in your system? "))
+    x=0
+    while (x < 1):
+        try:
+            num_sensors = int(input("How many sensors do you have in your system? "))
+            if num_sensors > 0:
+                x+=1
+            else:
+                print("Error: Improper Number of Sensors Provided. Please only input a positive integer value.")
+        except ValueError:
+            print("Error: Invalid Input, please only input a positive integer value.")
+        except OverflowError:
+            print("Error: Number too large")
     temps = temp_input(num_sensors)
     temps = temp_sort(temps)
     result_holder = temp_min_max(temps)
     temp_average(temps, result_holder)
-    print(f"Your sensors had a minimum recorded value of {result_holder[0]}, and a maximum recorded value of {result_holder[1]}. The average temperature was {result_holder[2]}")
+    print(f"Min: {result_holder[0]}{DEGREE_SIGN}, Max: {result_holder[1]}{DEGREE_SIGN}, Avg: {result_holder[2]}{DEGREE_SIGN}")
 main()
