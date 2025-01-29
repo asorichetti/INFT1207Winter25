@@ -3,7 +3,7 @@ class Student:
         self.name = name
         self.age = age
         self.student_id = student_id
-
+      
     def display_info(self):
         print(f"Name: {self.name}, Age: {self.age}, Student ID: {self.student_id}")
 
