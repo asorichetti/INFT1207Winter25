@@ -9,6 +9,8 @@ import csv
 
 # Function to add a book to the reading list
 def add_book(title, author, year):
+    if year == "":
+        return("It appears you did not put anything in the year value")
     try:
         with open('books.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
