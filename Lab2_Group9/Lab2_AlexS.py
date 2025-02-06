@@ -50,8 +50,10 @@ def delete_book():
     remove=open('books.csv', 'r+')
     lines = remove.readlines()
     lines.pop()
+    remove.close()
     remove=open('books.csv', 'w+')
     remove.writelines(lines)
+    remove.close()
     return("Deleted Successfully")
 
 # Menu loop
