@@ -14,7 +14,7 @@ class TestReadingList(unittest.TestCase):
      def test_search_book(self):
         """Test searching for an existing book."""
         output_result = search_book("Test Book")  # Now it returns a value
-        expected_output = 1
+        expected_output = "Found: Title: Test Book, Author: Author Name, Year: 2022"
         self.assertEqual(output_result, expected_output, "search_book did not return the expected output.")
 
 
