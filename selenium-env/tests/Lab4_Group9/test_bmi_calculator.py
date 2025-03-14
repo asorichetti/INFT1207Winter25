@@ -1,3 +1,8 @@
+# Name: Alex Sorichetti
+# Assignment: Lab 4
+# Description: A test file which tests a live website that calculates a persons BMI
+# As tested with various inputs.
+
 import pytest
 import time
 import json
